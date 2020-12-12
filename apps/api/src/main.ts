@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 import { Message } from '@massino/api-interfaces';
 
-const app = express();
+const app: Application = express();
 
 // important to use before
 app.use(bodyParser.json());
