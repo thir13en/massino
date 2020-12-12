@@ -1,7 +1,11 @@
-import * as express from 'express';
+import express, { Application } from 'express';
+import bodyParser from 'body-parser';
 import { Message } from '@massino/api-interfaces';
 
 const app = express();
+
+// important to use before
+app.use(bodyParser.json());
 
 const greeting: Message = { message: 'Welcome to api!' };
 
