@@ -30,10 +30,19 @@ Within the image, access postgres:
 ```
 psql -U postgres
 postgres-# \du # You are the superuser now
-postgres-# create database massino;
+postgres-# create database massino; # Make sure to include the semi-colon
 # check db
 postgres=# \l
 # connect to db
 postgres=# \c massino
 massino=# \d # Did not find any relations
 ```
+Install `postgresql` on your local:
+```
+sudo dnf install postgres
+```
+From your machine, using psql, connect to the postgres running in the container:
+```
+psql -h localhost -p 5432 -U postgres
+```
+Run db commands defined [here](db/migration.sql) to create tables.
