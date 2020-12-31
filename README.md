@@ -45,4 +45,23 @@ From your machine, using psql, connect to the postgres running in the container:
 ```
 psql -h localhost -p 5432 -U postgres
 ```
+Copy the sql instructions to shape the db into your docker image:
+```shell
+docker cp ./db/migration.sql massino-db:/home/migration.sql
+```
+Enter into your container and run the following commands to create the tables from file:
+```shell
+# Enter the container
+docker exec -it massino-db bash
+# Create tables
+psql massino postgres -f /home/migration.sql
+```
 Run db commands defined [here](db/migration.sql) to create tables.
+
+### Serve the app
+```shell
+# BE
+nx serve api
+# FE
+nx serve massino
+```
