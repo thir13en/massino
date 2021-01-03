@@ -65,3 +65,16 @@ nx serve api
 # FE
 nx serve massino
 ```
+
+### Express architecture  
+Via `Express routes`, `HTTP request` that matches a `route` will be checked by `CORS Middleware` before coming to `Security layer`.  
+
+`Security layer` includes:  
+
+    `JWT Authentication Middleware`: verify SignUp, verify token
+    `Authorization Middleware`: check User’s roles with record in database
+
+If these middlewares throw any error, a message will be sent as `HTTP response`.
+
+Controllers interact with Postgres Database via Sequelize and send `HTTP response` (`token`, user information, data based on roles…) to client.  
+![Architecture](img/auth-arch.png)  
